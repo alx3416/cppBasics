@@ -1,0 +1,10 @@
+# Default ignored files
+*.png
+CD
+.idea
+.ipynb_checkpoints
+data
+output
+utils/__pycache__
+cmake-build-debug
+cmake-build-release
