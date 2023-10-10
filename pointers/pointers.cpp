@@ -62,6 +62,7 @@ int main() {
     std::cout << "p value: " << *p << std::endl;
     delete p;
 
+
     std::cout << "Press any key to continue\n";
     std::cin.ignore();
     // trying with a very large c-array
@@ -70,9 +71,12 @@ int main() {
     for(int i = 0; i < length; i++ ){
         pArray[i] = i;
     }
-    /*for(int i = 0; i < length; i++ ){
+    /*
+    for(int i = 0; i < length; i++ ){
         std::cout << pArray[i] << std::endl;
-    }*/
+    }
+    */
+
     std::cout << "Press any key to exit\n";
     std::cin.ignore();
     delete[] pArray;
