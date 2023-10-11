@@ -27,11 +27,11 @@ int main(int, char**)
             break;
         }
         cv::cvtColor(frame, frame_gray, cv::COLOR_BGR2GRAY);
-
-        std::cout << frame.at<cv::Vec3b>(0, 0) << std::endl;
-        frame.at<cv::Vec3b>(0,0)[0] = 0;
-        frame.at<cv::Vec3b>(0,0)[1] = 0;
-        frame.at<cv::Vec3b>(0,0)[2] = 255;
+        
+        // std::cout << frame.at<cv::Vec3b>(0, 0) << std::endl;
+        // frame.at<cv::Vec3b>(0,0)[0] = 0;
+        // frame.at<cv::Vec3b>(0,0)[1] = 0;
+        // frame.at<cv::Vec3b>(0,0)[2] = 255;
 
         imshow("Live", frame);
         imshow("Live - gray", frame_gray);
