@@ -1,8 +1,4 @@
-#include <opencv2/core.hpp>
-#include <opencv2/videoio.hpp>
-#include <opencv2/highgui.hpp>
-#include "opencv2/imgproc/imgproc.hpp"
-#include <iostream>
+#include "image_utils.h"
 
 
 int main(int, char**)
@@ -27,7 +23,8 @@ int main(int, char**)
             break;
         }
         cv::cvtColor(frame, frame_gray, cv::COLOR_BGR2GRAY);
-        
+        myLib::gammaCorrectionPassByReference(frame_gray);
+
         // std::cout << frame.at<cv::Vec3b>(0, 0) << std::endl;
         // frame.at<cv::Vec3b>(0,0)[0] = 0;
         // frame.at<cv::Vec3b>(0,0)[1] = 0;
