@@ -35,6 +35,33 @@ namespace myLib{
                 frame_gray.at<uint8_t >(row, col) = static_cast<uint8_t>(value);
             }
         }
+
+    }
+    uint8_t kernelmultiplyPassByReference(cv::Mat& kernel, cv::Mat& patch) {
+        double value = 0;
+        for (int row = 0; row < patch.rows; row++) {
+            for (int col = 0; col < patch.cols; col++) {
+                value = 0;
+                value += (static_cast<double>(patch.at<uint8_t>(row, col))/255) * kernel.at<double>(row, col);
+            }
+        }
+        return static_cast<uint8_t>((value/9)*255);
+    }
+    
+    
+    void filterPassByReference(cv::Mat& frame_gray) {
+        double value = 0;
+        cv::Mat kernel = (cv::Mat_<double>(3, 3) << 0, -1, 0, 0, -1, 0, 0, -1, 0);
+        cv::Mat localPatch;
+        for (int row = 1; row < frame_gray.rows-1; row++) {
+            for (int col = 1; col < frame_gray.cols-1; col++) {
+                value = static_cast<double>(frame_gray.at<uint8_t >(row, col));
+                localPatch = frame_gray(cv::Range(row-1, row+2),
+                                        cv::Range(col-1, col+2));
+                // Multiplicamos punto a punto, el resultado es el nuevo pixel
+                frame_gray.at<uint8_t >(row, col) = kernelmultiplyPassByReference(kernel, localPatch);
+            }
+        }
     }
 } // namespace myLib
 
