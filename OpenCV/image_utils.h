@@ -7,6 +7,7 @@
 #include "opencv2/imgproc/imgproc.hpp"
 #include <iostream>
 #include <cmath>
+#include <omp.h>
 
 namespace myLib{
 
@@ -51,6 +52,21 @@ namespace myLib{
     void filterPassByReference(cv::Mat& frame_gray) {
         cv::Mat kernel = (cv::Mat_<double>(3, 3) << 0, -1, 0, 0, -1, 0, 0, -1, 0);
         cv::Mat localPatch;
+        for (int row = 1; row < frame_gray.rows-1; row++) {
+            for (int col = 1; col < frame_gray.cols-1; col++) {
+                localPatch = frame_gray(cv::Range(row-1, row+2),
+                                        cv::Range(col-1, col+2));
+                // Multiplicamos punto a punto, el resultado es el nuevo pixel
+                frame_gray.at<uint8_t >(row, col) = kernelmultiplyPassByReference(kernel, localPatch);
+            }
+        }
+    }
+
+
+    void filterPassByReferenceParallel(cv::Mat& frame_gray) {
+        cv::Mat kernel = (cv::Mat_<double>(3, 3) << 0, -1, 0, 0, -1, 0, 0, -1, 0);
+        cv::Mat localPatch;
+// #pragma omp parallel for shared(frame_gray)
         for (int row = 1; row < frame_gray.rows-1; row++) {
             for (int col = 1; col < frame_gray.cols-1; col++) {
                 localPatch = frame_gray(cv::Range(row-1, row+2),

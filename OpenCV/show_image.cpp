@@ -13,6 +13,7 @@ int main(int, char**)
         std::cerr << "ERROR! Unable to open camera\n";
         return -1;
     }
+
     for (;;)
     {
 
@@ -23,8 +24,8 @@ int main(int, char**)
             break;
         }
         cv::cvtColor(frame, frame_gray, cv::COLOR_BGR2GRAY);
-        // myLib::gammaCorrectionPassByReference(frame_gray);
-        myLib::filterPassByReference(frame_gray);
+        myLib::gammaCorrectionPassByReference(frame_gray);
+        // myLib::filterPassByReferenceParallel(frame_gray);
 
         // std::cout << frame.at<cv::Vec3b>(0, 0) << std::endl;
         // frame.at<cv::Vec3b>(0,0)[0] = 0;
