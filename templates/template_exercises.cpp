@@ -15,4 +15,6 @@ int main(){
     std::cout << " ptr2 = " << *ptr2 << std::endl;
     delete ptr1;
     delete ptr2;
+
+    // swap 2 vectors v1=a,b,c  v2=x,y,z
 }

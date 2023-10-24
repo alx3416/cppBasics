@@ -1,6 +1,7 @@
 #ifndef CPPBASICS_TEMPLATE_EXERCISES_H
 #define CPPBASICS_TEMPLATE_EXERCISES_H
 #include <iostream>
+#include <vector>
 
 namespace myTemplates {
 
