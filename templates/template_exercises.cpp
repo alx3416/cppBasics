@@ -17,4 +17,12 @@ int main(){
     delete ptr2;
 
     // swap 2 vectors v1=a,b,c  v2=x,y,z
+
+    // sum all elements in a C Array
+    float float_data[5] {3.14, -2.71, 1.33, -7.77, 5.1};
+    int int_data[5] {10,20,30,40,50};
+    std::cout << "Sum float_data = " << myTemplates::sum(float_data, 5) << std::endl;
+    std::cout << "Sum int_data = " << myTemplates::sum(int_data, 5) << std::endl;
+    
+    return 0;
 }
