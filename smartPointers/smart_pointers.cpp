@@ -64,5 +64,43 @@ int main()
     if (auto locked_wp = weakP1.lock()) {
         std::cout << locked_wp->area() << std::endl;
     }
+
+    // Smart Pointers and Arrays
+    auto ptr_array = std::make_unique<int[]>(10);
+    std::cout << ptr_array[0] << '\n';
+    std::cout << ptr_array[9] << '\n';
+
+    auto ptr_array_large = std::make_unique<int[]>(10000000);
+    std::cout << ptr_array_large[0] << '\n';
+    std::cout << ptr_array_large[9999999] << '\n';
+
+    // 2D array and smart pointers
+    std::unique_ptr<std::unique_ptr<int[]>[]>     smartPtr2D;
+    std::unique_ptr<int[]>                        smartPtr1D;
+
+    int dataCounter = 0;
+
+    smartPtr2D = std::make_unique< std::unique_ptr<int[]>[] >(4);
+    for (int i = 0; i<4; i++)
+    {
+        smartPtr1D = std::make_unique<int[]>(3);
+        for (int j = 0; j<3; j++)
+        {
+            smartPtr1D[j] = dataCounter;
+            dataCounter++;
+        }
+        smartPtr2D[i] = move(smartPtr1D);
+    }
+
+    for (int i = 0; i<4; i++)
+    {
+        for (int j = 0; j<3; j++)
+        {
+            std::cout << smartPtr2D[i][j] << ' ';
+        }
+        std::cout << '\n';
+    }
+
+
     return 0;
 }
