@@ -89,14 +89,7 @@ int main()
         }
         smartPtr2D[i] = std::move(smartPtr1D);
     }
-
-    for (int i = 0; i<4; i++){
-        for (int j = 0; j<3; j++){
-            std::cout << smartPtr2D[i][j] << ' ';
-        }
-        std::cout << '\n';
-    }
-
-
+    smartPtrs::fun(smartPtr2D);
     return 0;
 }
+

@@ -31,6 +31,16 @@ namespace smartPtrs{
         int area() { return length * width; }
     };
 
+    void fun(std::unique_ptr<std::unique_ptr<int[]>[]> &myArray)
+    {
+        for (int i = 0; i<4; i++){
+            for (int j = 0; j<3; j++){
+                std::cout << myArray[i][j] << ' ';
+            }
+            std::cout << '\n';
+        }
+    }
+
 
 
 }
