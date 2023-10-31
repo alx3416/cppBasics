@@ -81,21 +81,17 @@ int main()
     int dataCounter = 0;
 
     smartPtr2D = std::make_unique< std::unique_ptr<int[]>[] >(4);
-    for (int i = 0; i<4; i++)
-    {
+    for (int i = 0; i<4; i++){
         smartPtr1D = std::make_unique<int[]>(3);
-        for (int j = 0; j<3; j++)
-        {
+        for (int j = 0; j<3; j++){
             smartPtr1D[j] = dataCounter;
             dataCounter++;
         }
-        smartPtr2D[i] = move(smartPtr1D);
+        smartPtr2D[i] = std::move(smartPtr1D);
     }
 
-    for (int i = 0; i<4; i++)
-    {
-        for (int j = 0; j<3; j++)
-        {
+    for (int i = 0; i<4; i++){
+        for (int j = 0; j<3; j++){
             std::cout << smartPtr2D[i][j] << ' ';
         }
         std::cout << '\n';
