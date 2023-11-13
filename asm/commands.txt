@@ -1,0 +1,4 @@
+nasm -f win64 hello_world.asm
+
+C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.37.32822/bin/Hostx64/x86/link.exe hello_world.obj /subsystem:windows /entry:WinMain  /libpath:path_to_libs /nodefaultlib kern
+el32.lib user32.lib /largeaddressaware:no
