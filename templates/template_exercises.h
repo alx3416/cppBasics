@@ -22,5 +22,28 @@ namespace myTemplates {
         ;
     }
 
+    template<typename T>
+    T sum(T a[], int length)
+    {
+        T ret = a[0];
+        for (int i = 1; i < length; i ++)
+            ret += a[i];
+
+        return ret;
+    }
+    template<class T>
+    class Number {
+    private:
+        // Variable of type T
+        T num;
+
+    public:
+        Number(T n) : num(n) {}   // constructor
+
+        T getNum() {
+            return num;
+        }
+    };
+
 } // myTemplates
 #endif //CPPBASICS_TEMPLATE_EXERCISES_H

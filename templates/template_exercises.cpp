@@ -29,5 +29,15 @@ int main(){
     std::cout << "Sum float_data = " << myTemplates::sum(float_data, 5) << std::endl;
     std::cout << "Sum int_data = " << myTemplates::sum(int_data, 5) << std::endl;
 
+    // create object with int type
+    myTemplates::Number<int> numberInt(7);
+    // create object with double type
+    myTemplates::Number<double> numberDouble(7.7);
+
+    std::cout << "int Number = " << numberInt.getNum() << std::endl;
+    std::cout << "double Number = " << numberDouble.getNum() << std::endl;
+
+
+
     return 0;
 }
